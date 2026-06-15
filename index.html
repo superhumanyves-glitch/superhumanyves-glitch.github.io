@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/daymark.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#f7f3eb" />
+    <script>
+      // Evening ink, pre-paint: resolve the stored theme before first render
+      // so dark mode never flashes light (ADR 0017).
+      try {
+        var p = localStorage.getItem('daymark-theme')
+        var d = p === 'dark' || (p !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches)
+        document.documentElement.dataset.theme = d ? 'dark' : 'light'
+        var m = document.querySelector('meta[name="theme-color"]')
+        if (m) m.setAttribute('content', d ? '#1e1a13' : '#f7f3eb')
+      } catch (e) {}
+    </script>
+    <meta name="description" content="Daymark — run your days, reach your goals, stay on the path." />
+    <title>Daymark</title>
+    <script type="module" crossorigin src="/assets/index-BIu1rBnh.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/jsx-runtime-bzQ4Vb5N.js">
+    <link rel="modulepreload" crossorigin href="/assets/db-DuaNqTEF.js">
+    <link rel="modulepreload" crossorigin href="/assets/journal-DSVFyhGp.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-B1JliDsN.css">
+  <link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
